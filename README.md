@@ -74,9 +74,9 @@ and I query `209`, I can expect the following output:
 
 ```
 nav 209
-Are you looking for /home/max/tufts/cs105/studentids/209? (y/n)
-Are you looking for /home/max/logs/020921? (y/n)
-Are you looking for /home/max/scans/209.85.231.104 (y/n)
+Are you looking for /home/max/tufts/cs105/studentids/209 ? (y/n)
+Are you looking for /home/max/logs/020921 ? (y/n)
+Are you looking for /home/max/scans/209.85.231.104 ? (y/n)
 ```
 Note that the exact match appears first, and directories with a common substring to the query appear afterwards.
 
