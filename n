@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# makes sure run as source; otherwise, cd'ing will not work
+if [ -z $PS1 ]; then
+    echo "navigate (n) must be sourced. Use \"source n\" instead."
+
+# allows user to clear jumptable database with special command
+elif [ $1 == '/' ]; then
+    echo 'Are you sure you want to clear the jumptable in data.json? THIS CANNOT BE UNDONE! (y/n) '
+    read -k1 -s ans
+    if [ $ans == 'y' ]; then
+        echo '{}' > ~/projects/navigate/data.json
+	echo 'Your jumptable has been cleared.'
+    else
+        echo 'Your jumptable remains unaltered.'
+    fi
+
+# runs actual algorithm
+else
+    python3 ~/projects/navigate/nav.py $1
+    # change directory if we found a solution
+    if [ $? -eq 0 ]; then
+        GOAL=$(jq -r '.GOAL_NAVPY_RESERVED' ~/projects/navigate/data.json)
+        cd $GOAL
+    fi
+fi
