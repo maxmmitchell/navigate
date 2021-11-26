@@ -95,11 +95,16 @@ Note the order again, with exact match appearing first.
 
 
 ## Installation & Usage
+### Installation
 To install, clone this repo or simply download the associated files. Then, you will need to do the following:
 * start by ensuring the paths listed in files `n` and `nav.py` accurately reflect the full filepath of `data.json` and `nav.py` in your system. I've used my own filepaths, but if you want to use this program across your entire computer, you will need the proper paths.
 * create an alias to reference this program conveniently. `n` needs to be run as `source` to work, so run the command `alias nav="source ~/projects/navigate/n"`. Naturally, replace `~/projects/navigate/n` with whatever your filepath is. Of course, you can call this `alias` anything -- I like to use `nav`, as it is short, sweet, representative, and not used by anything else. 
 * I recommend putting this `alias` command in your `~/.bashrc` or `~/.bash_aliases` file so it is run at startup and you don't have to do it manually.
 
+### Requirements
+Please see `requirements.txt`.
+
+### Usage
 To use, simply run on the command line like so: `nav <DIRECTORY NAME>`
 
 Follow the prompts to select the directory you want. Using the jumptable, you will need to type the associated 
@@ -110,6 +115,16 @@ To clear your jumptable, run on the command line: `nav /` and follow the associa
 
 Feel free to use, modify, and distribute this code, with the appropriate credit.
 
+## What's in this repo
+`nav.py`: python script containing main algorithm for finding directory and managing jumptable.
+
+`n`: shell script to wrap the main algorithm and actually change the directory. must be run as `source` to work.
+
+`data.json`: json text file to store jumptable
+
+`README.md`: this file
+
+`requirements.txt`: python library requirements for `nav.py`.
 
 ## Author
 This code is written entirely by Max Mitchell. Special thanks to Paul Mitchell for consulting on approaches to various
