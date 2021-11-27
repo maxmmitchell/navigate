@@ -115,7 +115,7 @@ To clear your jumptable, run on the command line: `nav /` and follow the associa
 
 Feel free to use, modify, and distribute this code, with the appropriate credit.
 
-## What's in this repo
+## What's in this repo?
 `nav.py`: python script containing main algorithm for finding directory and managing jumptable.
 
 `n`: shell script to wrap the main algorithm and actually change the directory. must be run as `source` to work.
@@ -125,6 +125,13 @@ Feel free to use, modify, and distribute this code, with the appropriate credit.
 `README.md`: this file
 
 `requirements.txt`: python library requirements for `nav.py`.
+
+## The Future of Navigate
+I have plans to develop the following features for `navigate`, as time allows:
+* add a 'back' and 'forward' feature which allows user to travel forward and back to recently visited directories
+* allow option to print all query results instead of `y/n`'ing through them one-by-one (per request of my dad)
+* incorporate typo recognition for queries
+* improve ordering
 
 ## Author
 This code is written entirely by Max Mitchell. Special thanks to Paul Mitchell for consulting on approaches to various
