@@ -43,12 +43,16 @@ def find_path(mypath):
     # check if goal is other directories
     if goal in onlydir:
         sol = join(mypath, goal)
-        # ask user 
         print('Looking for ' + sol + ' ? (y/n)')
         ans = getch.getch()
-        if ans == 'y' or answer == 'Y':
+        if ans == 'y' or ans == 'Y':
             return goal_found(sol)
     # otherwise, search other directories
+    for d in onlydir:
+        # recurse
+        val = find_path(join(mypath, d))
+        if val != 'FAILURE':
+            return val
     for d in onlydir:
         # if goal is substring of d, ask user if this is the dir they want first
         if goal in d and goal != d:
@@ -57,22 +61,13 @@ def find_path(mypath):
             ans = getch.getch()
             if ans == 'y' or ans == 'Y':
                 return goal_found(sol)
-        # otherwise recurse
-        val = find_path(join(mypath, d))
-        if val != 'FAILURE':
-            return val
-                # ask user if correct
-                #answer = input('Looking for ' + val + ' ? (y/n) ')
-                #if answer == 'y' or answer == 'Y':
-                    # store data in jumptable and return answer
-                #    return goal_found(val)
     return 'FAILURE'
 
 # returns only keys in jumptable for which sub is a strict substring
 def partial_keys(sub):
     fulls = list()
     for key in jumptable:
-        if sub in key and sub != key:
+        if sub in key  and sub != key:
             for val in jumptable[key]:
                 fulls.append(val)
     return fulls
@@ -83,6 +78,10 @@ goal_targets = fulls
 goal_targets_len = len(fulls)
 # first check if in our jump table
 if goal in jumptable:
+    for i in fulls:
+        if i in jumptable[goal]:
+            fulls.remove(i)
+    goal_targets_len = len(fulls)
     goal_targets = fulls + jumptable[goal]
     goal_targets_len += len(jumptable[goal])
 if goal in jumptable or len(fulls) > 0:
